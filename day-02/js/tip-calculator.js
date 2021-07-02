@@ -14,7 +14,9 @@ percentageInput.type = 'number';
 percentageInput.placeholder = 'What Percent?';
 
 const tipButton = document.createElement('button');
-tipButton.innerHTML = 'Tip'
+tipButton.innerHTML = 'Tip';
+
+
 
 
 
@@ -22,4 +24,15 @@ tipButton.innerHTML = 'Tip'
 document.body.appendChild(totalInput);
 document.body.appendChild(percentageInput);
 document.body.appendChild(tipButton);
+
+tipButton.addEventListener('click', function() {
+    console.log('click');
+
+    const total = Number(totalInput.value);
+    const percent = Number(percentageInput.value);
+    
+   
+    console.log(percent / 100 * total);
+    h1.innerText = percent / 100 * total;
+})
 
