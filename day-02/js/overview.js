@@ -1,5 +1,6 @@
 // Primitive values
 
+let loggedInUser = null;
 const strings = `yellow`;
 let score = 0;
 const boolean = false;
@@ -42,8 +43,8 @@ score %= 2;
 
 
 const values = [5 + 5, 5-3, 5*2, 5 / 2, 32 % 8];
-console.log(score);
-
+console.log(myUndefined);
+typeof values;
 
 
 
