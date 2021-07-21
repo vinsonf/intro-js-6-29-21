@@ -3,10 +3,16 @@ const app = express();
 const cors = require('cors');
 const port = 5000;
 
+const fs = require('fs');
+
+let users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
+
+console.log('users', users)
+
 app.use(cors());
 app.use(express.json());
 
-const users = [];
+
 
 app.get('/facts', function(req, res) {
     res.json([{text: 'cats are small sometimes'}, {text: 'cats sleep a lot'}]);
@@ -16,6 +22,7 @@ app.post('/register', function(req, res) {
     console.log(req.body);
     if (req.body.username) {
         users.push(req.body);
+        fs.writeFileSync('./data/users.json', JSON.stringify(users));
         res.json({
             success: true,
             message: 'you have successfully registered.'

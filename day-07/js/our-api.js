@@ -1,8 +1,17 @@
-const BASE_URL = 'http://c0b23c3ae165.ngrok.io';
+const BASE_URL = 'http://fea2d139a33e.ngrok.io';
 const FACTS_ENDPOINT = '/facts';
 const USERS_ENDPOINT = '/users';
 const REGISTER_ENDPOINT = '/register';
-const LOGIN_ENDPOINT = '/login'
+const LOGIN_ENDPOINT = '/login';
+
+const username = document.querySelector('#username');
+const registerButton = document.querySelector('#register');
+const loginButton = document.querySelector('#login');
+
+registerButton.addEventListener( 'click', register);
+loginButton.addEventListener('click', login);
+
+
 
 
 function post(endpoint, data) {
@@ -24,9 +33,17 @@ function get(endpoint) {
     .then(function(res) {return res.json();})
 }
 
-post(REGISTER_ENDPOINT, {username: 'vinson'})
-.then( function (data) {
-   console.log(data);
-});
 
-post(LOGIN_ENDPOINT, {username: 'vinson', password: 'password'}).then( data => console.log(data));
+function register() {
+    post(REGISTER_ENDPOINT, {username: username.value})
+    .then( function (data) {
+       console.log(data);
+    });
+}
+
+function login() {
+    post(LOGIN_ENDPOINT, {username: username.value, password: 'password'}).then( data => console.log(data));
+}
+
+
+
