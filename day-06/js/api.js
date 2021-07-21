@@ -3,7 +3,7 @@ const listLengthInput = document.querySelectorAll('input')[1];
 const button = document.querySelector('button');
 const listEl = document.querySelector('.list');
 const pokemonEl = document.querySelector('.pokemon');
-let offset = 1;
+let offset = 0;
 let listLength = 20;
 
 button.addEventListener('click', () => {
@@ -34,12 +34,14 @@ function getPokemonList() {
     const base_url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${listLength}`;
 
     fetch(base_url)
-    .then(res => res.json() )
+    .then(
+        function(whatever) { return whatever.json() }
+        )
     .then(data => {
 
         listEl.innerHTML = '';
         console.log(data);
-        data.results.forEach( pokemon => {
+        data.results.forEach( (pokemon, index, array) => {
             const li = document.createElement('li');
             li.innerText = pokemon.name;
             listEl.appendChild(li);
