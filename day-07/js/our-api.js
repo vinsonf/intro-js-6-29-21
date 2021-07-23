@@ -11,9 +11,6 @@ const loginButton = document.querySelector('#login');
 registerButton.addEventListener( 'click', register);
 loginButton.addEventListener('click', login);
 
-
-
-
 function post(endpoint, data) {
     return fetch(BASE_URL + endpoint, 
         {
